@@ -38,15 +38,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $newProduct = new Product();
-        $newProduct->title = $data['title'];
-        $newProduct->description = $data['description'];
-        $newProduct->thumb = $data['thumb'];
-        $newProduct->price = $data['price'];
-        $newProduct->series = $data['series'];
-        $newProduct->type = $data['type'];
-        $newProduct->artists = $data['artists'];
-        $newProduct->writers = $data['writers'];
+        // $newProduct = new Product();
+        // $newProduct->title = $data['title'];
+        // $newProduct->description = $data['description'];
+        // $newProduct->thumb = $data['thumb'];
+        // $newProduct->price = $data['price'];
+        // $newProduct->series = $data['series'];
+        // $newProduct->type = $data['type'];
+        // $newProduct->artists = $data['artists'];
+        // $newProduct->writers = $data['writers'];
+
+        $newProduct = Product::create($data);
+        return redirect()->route('products.show', $newProduct->id);
     }
 
     /**
@@ -68,7 +71,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -80,7 +83,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $data = $request->all();
+
+        $product = new Product();
+        $product->title = $data['title'];
+        $product->description = $data['description'];
+        $product->thumb = $data['thumb'];
+        $product->price = $data['price'];
+        $product->series = $data['series'];
+        $product->type = $data['type'];
+        $product->sale_date = $data['sale_date'];
+        $product->artists = $data['artists'];
+        $product->writers = $data['writers'];
+
+        $product-> update();
+
+        return redirect()->route('products.show', $product->id);
+
     }
 
     /**
@@ -89,8 +109,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.index');
+
     }
 }

@@ -5,13 +5,6 @@
         <h2 class="text-center pt-2">Inserisci nuovi Comics</h2>
         <form action="{{route('products.store')}}" method="POST" class="p-4">
             @csrf
-            <div class="mb-3">
-                <label for="type" class="form-label d-block">Type</label>
-               <select class="btn btn-danger" name="type" id="type" required>
-                <option value="comic book">Comic Book</option>
-                <option value="graphic novel">Graphic Novel</option>
-               </select>
-              </div>
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" required>
@@ -38,14 +31,16 @@
                 <input type="text" class="form-control" id="artists" name="artists" required>
               </div>
               <div class="mb-3">
-                <label for="Writers" class="form-label">Writers</label>
+                <label for="image" class="form-label">Writers</label>
                 <input type="text" class="form-control" id="writers" name="writers" required>
-              </div> <div class="mb-3">
-                <label for="sale_date" class="form-label">Sale Date</label>
-                <input type="text" class="form-control" id="sale_date" name="sale_date" required>
-                <span>Esempio: 2022-12-21</span>
               </div>
-
+              <div class="mb-3">
+                <label for="type" class="form-label d-block">Type</label>
+               <select class="btn btn-danger" name="type" id="type" required>
+                <option value="comic book">Comic Book</option>
+                <option value="graphic novel">Graphic Novel</option>
+               </select>
+              </div>
               <button type="submit" class="btn btn-success">Submit</button>
               <button type="reset" class="btn btn-primary">Reset</button>
 

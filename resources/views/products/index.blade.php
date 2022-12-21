@@ -9,6 +9,7 @@
           current series
           </h1>
           <h2 class="text-center pb-3"><a class="text-decoration-none text-danger" href="{{ route('home') }}">Torna alla Home</a></h2>
+          <h4 class="text-center pb-3"><a class="text-decoration-none text-danger" href="{{ route('products.create') }}">Vai al form</a></h4>
         </div>
         <div class="container-fluid  mt-4">
           <div class="row ">
@@ -19,10 +20,9 @@
               <div><strong>Prezzo: </strong> {{ $product->price }}</div>
               <div><strong>Serie: </strong> {{ $product->series }}</div>
               <div> <strong>Uscita: </strong> {{ $product->sale_date }}</div>
-              <div> <strong>Tipologia: </strong>  {{ $product->type }}</div>
-              <div><strong class="bold"> Artisti:</strong>  {{ $product->artists }}</div>
-              <div> <strong>Scrittori: </strong>  {{ $product->writers }}</div>
-
+              <div>
+                <button class="btn btn-danger"><a class="text-decoration-none text-white" href="{{ route('products.show', $product->id) }}">Visualizza Altro</a></button>
+              </div>
               </div>
             @endforeach
         </div>
